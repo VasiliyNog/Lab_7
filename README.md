@@ -1,54 +1,57 @@
-# Lab_7
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.Scanner;
+# Variant№ 8
+Public class Svedenia {
+    private static final Object PNOTE = ;
 
-public class Lab7 {
-    public static void main(String[] args) throws IOException{
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Сколько гор? ");
-        int count = sc.nextInt();
-        sc.nextLine();
-        RandomAccessFile rf, df;
-        String name , place,height, Path1 = "C:\\World\\workers.txt",Path2 = "C:\\World\\answer.txt";
-        try{
-            File f1 = new File(Path1);
-            File f2 = new File(Path2);
-            rf = new RandomAccessFile(f1, "rw");
-            df = new RandomAccessFile(f2, "rw");
-            for (int i = 0; i < count; i++) {
-                System.out.println("Введите название горы ");
-                name = sc.nextLine();
-                rf.writeUTF(name);
-                for (int j = 0; j < 20 - name.length(); j++) {
-                    rf.writeByte(1);
-                }
+    public static void main(String[] args) {
+        using namespace Object std;
+        std;
 
-                System.out.println("Введите месторасположение ");
-                place = sc.nextLine();
-                rf.writeUTF(place);
-                for (int j = 0; j < 20 - place.length(); j++) {
-                    rf.writeByte(1);
-                }
-                System.out.println("Введите возраст ");
-                height = sc.nextLine();
-                rf.writeUTF(height);
-                for (int j = 0; j < 20 - height.length(); j++) {
-                    rf.writeByte(1);
-                }
-                System.out.println();
-                if (name.equals("Африка")){
-                    df.writeUTF(name);
-                    for (int j = 0; j < 20 - name.length(); j++) df.writeByte(1);
-                    df.writeUTF(place);
-                    for (int j = 0; j < 20 - place.length(); j++) df.writeByte(1);
-                    df.writeUTF(height);
-                    for (int j = 0; j < 20 - height.length(); j++)df.writeByte(1);
+        struct {
+            string fam, name;
+            int birdthdate[ 3];
+        
+    } typedef NOTE, *PNOTE;
+
+        int main () {
+            vector<PNOTE> notebook;
+
+            while (true) {
+                PNOTE note = new NOTE;
+                cout << "Vvedite familiy: ";
+                cin >> note -> fam;
+                cout << "Vvedite imya: ";
+                cin >> note -> name;
+                cout << "Birdth (dd mm yyyy): ";
+                cin >> note -> birdthdate[0];
+                cin >> note -> birdthdate[1];
+                cin >> note -> birdthdate[2];
+                notebook.push_back(note);
+                cout << "Vvesti eshe (y/n)? ";
+                char ch;
+                cin >> ch;
+                if (ch == 'n' || ch == 'N') break;
+            }
+
+            int occur = 0, month;
+            cout << "Enter month: ";
+            cin >> month;
+
+            for (auto v : notebook)  // <---------------------------------------
+            {
+                if (v -> birdthdate[1] == month) {
+                    cout << v -> fam << " " << v -> name << " " <<
+                            v -> birdthdate[0] << "/" << v -> birdthdate[1] <<
+                                    "/" << v -> birdthdate[2] << endl;
+                    ++occur;
                 }
             }
-        }catch (Exception e){
-            e.printStackTrace();
+            if (!occur)
+                cout << "Takih net!" << endl;
+
+            for (auto v : notebook)
+                delete v;
+
+            return 0;
         }
     }
 }
