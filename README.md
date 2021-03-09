@@ -1,3 +1,4 @@
+# Lab_7
 # Variant№ 8
 Public class Svedenia {
     private static final Object PNOTE = ;
