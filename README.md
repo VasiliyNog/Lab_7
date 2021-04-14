@@ -1,58 +1,63 @@
 # Lab_7
-# Variant№ 8
-Public class Svedenia {
-    private static final Object PNOTE = ;
 
-    public static void main(String[] args) {
-        using namespace Object std;
-        std;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Scanner;
+public class Lab7 {
+    public static void main(String[] args) throws IOException{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Количество театров? ");
+        int count = sc.nextInt();
+        sc.nextLine();
+        RandomAccessFile rf, df;
+        String name , place,address,rating, Path1 = "C:\\World\\workers.txt",Path2 = "C:\\World\\answer.txt";
+        try{
+            File f1 = new File(Path1);
+            File f2 = new File(Path2);
+            rf = new RandomAccessFile(f1, "r");
+            df = new RandomAccessFile(f2, "r");
 
-        struct {
-            string fam, name;
-            int birdthdate[ 3];
-        
-    } typedef NOTE, *PNOTE;
-
-        int main () {
-            vector<PNOTE> notebook;
-
-            while (true) {
-                PNOTE note = new NOTE;
-                cout << "Vvedite familiy: ";
-                cin >> note -> fam;
-                cout << "Vvedite imya: ";
-                cin >> note -> name;
-                cout << "Birdth (dd mm yyyy): ";
-                cin >> note -> birdthdate[0];
-                cin >> note -> birdthdate[1];
-                cin >> note -> birdthdate[2];
-                notebook.push_back(note);
-                cout << "Vvesti eshe (y/n)? ";
-                char ch;
-                cin >> ch;
-                if (ch == 'n' || ch == 'N') break;
-            }
-
-            int occur = 0, month;
-            cout << "Enter month: ";
-            cin >> month;
-
-            for (auto v : notebook)  // <---------------------------------------
-            {
-                if (v -> birdthdate[1] == month) {
-                    cout << v -> fam << " " << v -> name << " " <<
-                            v -> birdthdate[0] << "/" << v -> birdthdate[1] <<
-                                    "/" << v -> birdthdate[2] << endl;
-                    ++occur;
+            for (int i = 0; i < count; i++) {
+                System.out.println("Введите название театра ");
+                name = sc.nextLine();
+                rf.writeUTF(name);
+                for (int j = 0; j < 20 - name.length(); j++) {
+                    rf.writeByte(1);
+                }
+                System.out.println("Художественный руководитель ");
+                place = sc.nextLine();
+                rf.writeUTF(place);
+                for (int j = 0; j < 20 - place.length(); j++) {
+                    rf.writeByte(1);
+                }
+                System.out.println("Введите адрес ");
+                address = sc.nextLine();
+                rf.writeUTF(address);
+                for (int j = 0; j < 20 - address.length(); j++) {
+                    rf.writeByte(1);
+                }
+                System.out.println("Введите рейтинг ");
+                rating = sc.nextLine();
+                rf.writeUTF(rating);
+                for (int j = 0; j < 20 - rating.length(); j++) {
+                    rf.writeByte(1);
+                }
+                System.out.println();
+                if (name.equals("Москва")){
+                    df.writeUTF(name);
+                    for (int j = 0; j < 20 - name.length(); j++) df.writeByte(1);
+                    df.writeUTF(place);
+                    for (int j = 0; j < 20 - place.length(); j++) df.writeByte(1);
+                    df.writeUTF(address);
+                    for (int j = 0; j < 20 - address.length(); j++)df.writeByte(1);
+                    df.writeUTF(rating);
+                    for (int j = 0; j < 20 - rating.length(); j++)df.writeByte(1);
                 }
             }
-            if (!occur)
-                cout << "Takih net!" << endl;
-
-            for (auto v : notebook)
-                delete v;
-
-            return 0;
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
+
